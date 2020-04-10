@@ -42,8 +42,8 @@ I give an example:  in the frontmatter
 
 ``` markdown
 ---
-- title: "List of Talks"
-- timestamp: "TS_TALKS"
+title: "List of Talks"
+timestamp: "TS_TALKS"
 ---
 
 Here I put the list of my talks...
