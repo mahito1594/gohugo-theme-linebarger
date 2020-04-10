@@ -1,0 +1,19 @@
+<header>
+  <div id="lang-switch">
+    {{ if .IsTranslated }}
+    <ul>
+      {{ range .Translations }}
+      <li><a href="{{ .Permalink }}">{{ .Lang }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+  <h1 id="site-title"><a href="{{ absLangURL "/" }}">{{ .Site.Title }}</a></h1>
+  <nav id="header-nav">
+    <ul>
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,19 @@
+<head>
+  <meta charaset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content ="IE=Edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="detection-format" content="telephone=no">
+
+  {{- if .IsHome }}
+  <title>{{ .Site.Title }}</title>
+  {{ else }}
+  <title>{{ with .Title }} {{ . }} | {{ end }}{{ .Site.Title }}</title>
+  {{ end -}}
+
+  <link href="{{ .Site.BaseURL }}css/ress.min.css" rel="stylesheet" media="all">
+  <link href="{{ .Site.BaseURL }}css/main.css" rel="stylesheet" media="all">
+  {{ if isset .Site.Params "customcss" }}
+  <link href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}" rel="stylesheet" media="all">
+  {{ end }}
+</head>

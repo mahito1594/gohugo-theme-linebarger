@@ -1,0 +1,9 @@
+{{ define "main" }}
+<dev class="post-header">
+  <h1 class="post-title">{{ .Title }}</h1>
+  {{ if .Params.timestamp }}
+  <div class="meta"><p>(Update: {{ getenv .Params.timestamp | dateFormat "Jan. 2, 2006" }})</p></div>
+  {{ end }}
+</dev>
+{{ .Content }}
+{{ end }}

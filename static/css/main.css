@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+    background-color: #ded5c0;
+    color: #451722;
+    font-family: serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+a {
+    color: #244440;
+}
+
+ul {
+    padding-left: 1.5rem;
+    margin: 1rem auto;
+}
+
+h1, h2, h3, h4 {
+    margin: 1rem auto 0.5rem;
+}
+
+h1 {
+    font-size: 2.75rem;
+}
+
+@media screen and (max-width: 640px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+h2 {
+    padding: 0.25rem;
+    border: 1px solid #ac6b25;
+    border-left: 0.75rem solid #ac6b25;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 640px) {
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+h3 {
+    border-left: 0.5rem solid #ac6b25;
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 640px) {
+    h3 {
+        font-size: 1.2rem;
+    }
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 640px) {
+    h4 {
+        font-size: 1rem;
+    }
+}
+
+/* header */
+#lang-switch {
+    height: 2em;
+}
+
+#lang-switch ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+#site-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+#site-title a {
+    color: #451722;
+    text-decoration: none;
+}
+
+#header-nav {
+    border-top: 1px solid #ac6b25;
+    border-bottom: 1px solid #ac6b25;
+    font-size: 1.1rem;
+}
+
+#header-nav ul {
+    margin: 0.5rem auto 0.5rem;
+    padding: 0;
+    display: flex;
+}
+
+#header-nav ul li {
+    list-style-type: none;
+    margin-right: 1rem;
+}
+
+/* header: navigation on links */
+#header-nav a {
+    position: relative;
+    display: inline-block;
+    color: #451722;
+    text-decoration: none;
+}
+
+#header-nav a::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #451722;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: transform 0.3s;
+}
+
+#header-nav a:hover::after {
+    transform: scale(1, 1);
+}
+
+.post-title {
+    margin-top: 0.75em;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.post-header .meta {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* footer */
+footer {
+    margin: 2rem auto;
+    border-top: 1px solid #ac6b25;
+    text-align: right;
+}
+
+/* List of Talks */
+.talk-list .title {
+    font-style: italic;
+}

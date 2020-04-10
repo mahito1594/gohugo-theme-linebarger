@@ -1,0 +1,17 @@
+{{ $talks := index .Site.Data ( .Get 0 ) }}
+<ul class="talk-list">
+  {{- range $talks -}}
+  <li>
+    <span class="title">{{ .title }}</span>,
+    {{- if .seminar_url }}
+    <a href="{{ .seminar_url }}" class="seminar">{{ .seminar }}</a>,
+    {{ else }}
+    <span class="seminar">{{ .seminar }}
+    {{ end -}}
+    <span class="institute">{{ .institute }}</span>,
+    <span class="city">{{ .city }}</span>,
+    <span class="country">{{ .country }}</span>,
+    <span class="date">{{ .date | dateFormat "Jan. 02, 2006" }}</span>.
+  </li>
+  {{- end -}}
+</ul>
