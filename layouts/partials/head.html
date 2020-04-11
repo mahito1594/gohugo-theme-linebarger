@@ -16,4 +16,10 @@
   {{ if isset .Site.Params "customcss" }}
   <link href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}" rel="stylesheet" media="all">
   {{ end }}
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ if isset .Site.Params "favicon" }}
+  <link href="{{ .Site.BaseURL }}{{ .Site.Params.favicon }}" rel="shortcut icon">
+  {{ end }}
 </head>
