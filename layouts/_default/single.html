@@ -1,9 +1,28 @@
-{{ define "main" }}
+{{ define "postHeader" }}
 <dev class="post-header">
   <h1 class="post-title">{{ .Title }}</h1>
-  {{ if .Params.timestamp }}
-  <div class="meta"><p>(Update: {{ getenv .Params.timestamp | dateFormat "Jan. 2, 2006" }})</p></div>
-  {{ end }}
+  <div class="meta">
+    <!-- date of post -->
+    {{ if isset .Params "timestamp" }}
+    <p>(Update: {{ getenv .Params.timestamp | dateFormat "Jan. 2, 2006" }})</p>
+    {{ else if not (in .Params.hidedates "date") }}
+    <p>{{ dateFormat "Jan. 02, 2006" .Date }}</p>
+    {{ end }}
+    {{ if not (in .Params.hidedates "lastmod") }}
+    <p>(Update: {{ dateFormat "Jan. 02, 2006" .Lastmod }})</p>
+    {{ end }}
+    <!-- tags -->
+    {{ if gt .Params.tags 0 }}
+    <ul class="post-tags">
+      {{ range .Params.tags }}
+      <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
 </dev>
+{{ end }}
+
+{{ define "main" }}
 {{ .Content }}
 {{ end }}

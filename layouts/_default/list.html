@@ -1,3 +1,30 @@
-<!DOCTYPE html>
-<html>
-</html>
+{{ define "postHeader" }}
+<dev class="post-header">
+  <h1 class="post-title">
+  {{- if isset .Data "Term" -}}
+  Entries tagged "{{ .Data.Term }}"
+  {{- else -}}
+  All Posts
+  {{- end -}}
+  </h1>
+</dev>
+{{ end }}
+
+
+{{ define "main" }}
+<dl class="list-posts">
+  {{ range .Data.Pages }}
+  <dt>
+    <span class="post-title">{{ .Title }}</span> &mdash; <span>{{ dateFormat "Jan. 02, 2006" .Date }}</span>
+  </dt>
+  <dd>
+    {{ if isset .Params "description" }}
+    {{ .Description }}
+    {{ else }}
+    {{ .Summary }}&hellip;<a href="{{ .RelPermalink }}">read more</a>
+    {{ end }}
+  </dd>
+  {{ end }}
+</dl>
+{{ template "_internal/pagination.html" . }}
+{{ end }}
