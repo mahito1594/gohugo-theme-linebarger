@@ -1,0 +1,22 @@
+{{ $papers := index .Site.Data ( .Get 0 ) }}
+<ul class="papers-list">
+  {{- range $papers -}}
+  <li>
+    <span class="title">{{ .title }}</span>,
+    {{- if .joint_work }}
+    <span class="joint_work">joint work with&nbsp;
+      {{- range .joint_work -}}
+      <span class="author">{{ . }}</span>,
+      {{- end -}}
+    </span>
+    {{ end -}}
+    {{- if .published }}
+    <span class="journal">{{ .journal }}</span>,
+    <span class="year">({{ .year }})</span>,
+    {{ end -}}
+    <a href="https://arxiv.org/abs/{{ .eprint }}" class="arxiv">{{ .archivePrefix }}:{{ .eprint }} [{{ .primaryClass }}]</a>
+    {{- with .note }}
+    , <span class="note">{{ . }}</span>
+    {{ end -}}
+  {{- end -}}
+</ul>
