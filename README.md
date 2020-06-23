@@ -5,13 +5,36 @@ This is a minimal Hugo theme for myself.
 
 ## Main Features
 
-- Generate lists of ~~articles~~/talks from YAML|TOML|JSON,
+- Generate lists of articles/talks from YAML|TOML|JSON,
 - Get last modified date from YAML|TOML|JSON file.
 
 ### Generate lists from YAML|TOML|JSON
-You can do it by using the shortcode `listTalks`.
+You can do it by using the shortcodes `listPapers`/`listTalks`.
 
-First, you put the data file containing the information of your talks at `/data/`.
+#### List of articles
+First of all, you put the data file which contains the information of your publications at `/data`.
+The information should be given in the form:
+
+``` yaml
+# Example (YAML): /data/papers.yml
+- title: "The Title of Your Publication"
+  jount_work: ["Co-Author 1", "Co-Author 2", ...]
+  archivePrefix: "arXiv"
+  eprint: YYMM.?????
+  primaryClass: "math.AG"
+  published: false # set to false if it is nothing but a preprint
+```
+
+*WIP*: I will add other entries (e.g., `journal`, `volume`, `year` and so on), which are based on ones of BibTeX.
+
+After put the data file, you can call the shortcode `listPapers`, for example:
+
+``` markdown
+{{< listPapers "papers" >}}
+```
+
+#### List of talks
+Similarly, you put the data file containing the information of your talks at `/data/`.
 The information should be given in the form:
 
 ``` yaml
@@ -36,23 +59,17 @@ For example, `/data/talks/2020.yml` causes an error.
 
 ### Get modified date from data files
 By setting `timestamp` variable in the frontmatter, the date the data file was modified can be got.
-The author thank [the weblog article](https://42-design.work/technology/hugo-old-entry-alert/)(Japanese).
-Note that this method needs an environmental variable.
+Synopsis is `timestamp: "/data/file.suffix"` (YAML example).  Note that you must give the suffix.
+
 I give an example:  in the frontmatter
 
 ``` markdown
 ---
 title: "List of Talks"
-timestamp: "TS_TALKS"
+timestamp: "/data/talks.yml"
 ---
 
 Here I put the list of my talks...
-```
-
-Then, you build the website by
-
-``` shell
-TS_TALKS=$(date -r data/talks.yml) hugo
 ```
 
 ## Credits
