@@ -243,3 +243,8 @@ footer {
 .talk-list .title {
     font-style: italic;
 }
+
+/* List of Papers */
+.papers-list .title {
+    font-style: italic;
+}
